@@ -1,25 +1,26 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 public class Panel extends JPanel {
 
     private Paddle p1;
     private Paddle p2;
+    private Ball ball;
 
     public Panel(Paddle p1, Paddle p2){
         super();
         this.p1 = p1;
         this.p2 = p2;
+        this.ball = new Ball();
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(Color.white);
-        g.fillRect(p1.getPosX(), p1.getPosY(), p1.getWidth(),p1.getHeight());
-        g.fillRect(p2.getPosX(), p2.getPosY(), p2.getWidth(),p2.getHeight());
+        g.fillRect((int)p1.getPosX(), (int)p1.getPosY(), p1.getWidth(),p1.getHeight());
+        g.fillRect((int)p2.getPosX(), (int)p2.getPosY(), p2.getWidth(),p2.getHeight());
+        g.fillRect((int)ball.getPosX(), (int)ball.getPosY(), ball.getWidth(),ball.getHeight());
     }
 
 

@@ -1,14 +1,14 @@
 public class Paddle {
     private int height;
     private int width;
-    private int posX;
-    private int posY;
+    private double posX;
+    private double posY;
     private boolean movingUp;
     private boolean movingDown;
 
 
 
-    public Paddle(int posX, int posY, int width, int height){
+    public Paddle(double posX, double posY, int width, int height){
         this.posX = posX;
         this.posY = posY;
         this.width = width;
@@ -33,19 +33,19 @@ public class Paddle {
         this.width = width;
     }
 
-    public int getPosX() {
+    public double getPosX() {
         return posX;
     }
 
-    public void setPosX(int posX) {
+    public void setPosX(double posX) {
         this.posX = posX;
     }
 
-    public int getPosY() {
+    public double getPosY() {
         return posY;
     }
 
-    public void setPosY(int posY) {
+    public void setPosY(double posY) {
         this.posY = posY;
     }
 

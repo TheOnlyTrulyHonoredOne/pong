@@ -52,7 +52,7 @@ public class GameWindow implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-        handleMovement(e);
+        logKeys(e);
     }
 
     @Override
@@ -70,7 +70,7 @@ public class GameWindow implements KeyListener {
 
 
 
-    private void handleMovement(KeyEvent e) {
+    private void logKeys(KeyEvent e) {
         if(e.getKeyChar() == 'w'){
             p1.setMovingUp(true);
             p1.setMovingDown(false);
@@ -81,6 +81,8 @@ public class GameWindow implements KeyListener {
             p1.setMovingDown(true);
         }
     }
+
+
 
     public Paddle getP1() {
         return p1;

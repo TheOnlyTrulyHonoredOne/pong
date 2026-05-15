@@ -9,7 +9,10 @@ Status:
  */
 
 
-import javax.swing.*;
+double lastTime;
+double deltaTime;
+double currentTime;
+double vel = 50;
 
 void main() {
 
@@ -26,24 +29,33 @@ void main() {
 
 
 
-
-    FPS.calcBeginTime();
+    lastTime = System.nanoTime();
     while (inGame){
 
+        calculateDeltaTime();
+        movePlayer(p1);
 
-        if (p1.isMovingUp()){
-            p1.setPosY((int)(p1.getPosY() * 10 * FPS.getDeltaTime()));
-        }
-
-        if (p1.isMovingDown()){
-            p1.setPosY((int)(p1.getPosY() * -10 * FPS.getDeltaTime()));
-        }
 
 
         window.getMainPanel().repaint();
-        FPS.calcDeltaTime();
-        System.out.println(FPS.getDeltaTime());
+        System.out.println(p1.getPosY());
     }
 
 
+}
+
+private void movePlayer(Paddle p1) {
+    if (p1.isMovingUp() && p1.getPosY() >= 20){
+        p1.setPosY(p1.getPosY() + (-vel * deltaTime));
+    }
+
+    if (p1.isMovingDown() && p1.getPosY() <= (530)){
+        p1.setPosY(p1.getPosY() + (vel * deltaTime));
+    }
+}
+
+private void calculateDeltaTime() {
+    currentTime = System.nanoTime();
+    deltaTime = (currentTime - lastTime) / 1_000_000_000.0;
+    lastTime = currentTime;
 }
