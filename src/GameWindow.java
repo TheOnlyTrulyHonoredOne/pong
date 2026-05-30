@@ -8,6 +8,7 @@ public class GameWindow implements KeyListener {
     private Panel mainPanel;
     private Paddle p1;
     private Paddle p2;
+    private Ball ball;
 
 
     public GameWindow(){
@@ -19,8 +20,9 @@ public class GameWindow implements KeyListener {
 
         this.p1 = new Player(100, 100, 10, 144);
         this.p2 = new Player(690,100,10,144);
+        this.ball = new Ball();
 
-        this.mainPanel = new Panel(p1,p2);
+        this.mainPanel = new Panel(p1,p2, ball);
         mainPanel.setBackground(Color.BLACK);
         this.frame.setContentPane(mainPanel);
 
@@ -98,5 +100,14 @@ public class GameWindow implements KeyListener {
 
     public void setP2(Paddle p2) {
         this.p2 = p2;
+    }
+
+
+    public Ball getBall() {
+        return ball;
+    }
+
+    public void setBall(Ball ball) {
+        this.ball = ball;
     }
 }
