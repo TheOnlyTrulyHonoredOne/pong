@@ -41,6 +41,7 @@ void main() {
 
         calculateDeltaTime();
         movePlayer();
+        moveEnemy();
 
         moveBall();
 
@@ -60,16 +61,26 @@ private void moveBall() {
     }
 
     ball.setPosX(ball.getPosX() + (-ballVel * deltaTime));
+    ball.setPosY(ball.getPosY() + (-ballVel * deltaTime));
 
 }
 
 private boolean isColliding() {
 
+    // Colliding with Player
     if(ball.getPosX() <= p1.getPosX() + p1.getWidth()){
         if(ball.getPosY() >= p1.getPosY() && ball.getPosY() <= (p1.getPosY() + (float)p1.getHeight())){
             return true;
         }
     }
+
+    // Colliding with Enemy
+    if(ball.getPosX() >= p2.getPosX() - p2.getWidth()){
+        if(ball.getPosY() >= p2.getPosY() && ball.getPosY() <= (p2.getPosY() + (float)p2.getHeight())){
+            return true;
+        }
+    }
+
     return false;
 
 
@@ -83,6 +94,13 @@ private void movePlayer() {
     if (p1.isMovingDown() && p1.getPosY() <= (530)){
         p1.setPosY(p1.getPosY() + (vel * deltaTime));
     }
+}
+
+private void moveEnemy() {
+    if (p2.getPosY() >= 20 && p2.getPosY() <= 530){
+        p2.setPosY(p2.getPosY() + (-ballVel * deltaTime));
+    }
+
 }
 
 private void calculateDeltaTime() {

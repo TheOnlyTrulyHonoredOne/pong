@@ -19,7 +19,7 @@ public class GameWindow implements KeyListener {
         this.frame.setVisible(true);
 
         this.p1 = new Player(100, 100, 10, 144);
-        this.p2 = new Player(690,100,10,144);
+        this.p2 = new Player(690,300,10,144);
         this.ball = new Ball();
 
         this.mainPanel = new Panel(p1,p2, ball);
