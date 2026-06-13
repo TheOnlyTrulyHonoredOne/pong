@@ -22,6 +22,9 @@ Ball ball;
 void main() {
 
 
+    // Start Screen
+
+
 
     GameWindow window = new GameWindow();
 
@@ -97,8 +100,14 @@ private void movePlayer() {
 }
 
 private void moveEnemy() {
-    if (p2.getPosY() >= 20 && p2.getPosY() <= 530){
-        p2.setPosY(p2.getPosY() + (-ballVel * deltaTime));
+    if (p2.getPosY() >= 20){
+        if(p2.getPosY() <= 530){
+            p2.setPosY(p2.getPosY() + (-ballVel * deltaTime));
+        } else {
+            p2.setPosY(530);
+        }
+    } else {
+        p2.setPosY(20);
     }
 
 }

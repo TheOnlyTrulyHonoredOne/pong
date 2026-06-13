@@ -5,6 +5,7 @@ import java.awt.event.KeyListener;
 
 public class GameWindow implements KeyListener {
     private JFrame frame;
+    private JPanel startScreen;
     private Panel mainPanel;
     private Paddle p1;
     private Paddle p2;
