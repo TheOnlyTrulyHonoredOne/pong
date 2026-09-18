@@ -7,6 +7,10 @@ public class Panel extends JPanel {
     private Paddle p2;
     private Ball ball;
 
+    public Panel(){
+        super();
+    }
+
     public Panel(Paddle p1, Paddle p2, Ball ball){
         super();
         this.p1 = p1;

@@ -21,12 +21,17 @@ Ball ball;
 
 void main() {
 
-
-    // Start Screen
-
-
+    Scanner input = new Scanner(System.in);
 
     GameWindow window = new GameWindow();
+
+    // Start Screen
+    if(input.nextInt() == 1){
+        window.switchFrame("game");
+        window.setCurrentScreen("game");
+    }
+
+
 
 
     p1 = window.getP1();
@@ -42,15 +47,17 @@ void main() {
     lastTime = System.nanoTime();
     while (inGame){
 
-        calculateDeltaTime();
-        movePlayer();
-        moveEnemy();
-
-        moveBall();
 
 
+            calculateDeltaTime();
+            movePlayer();
+            moveEnemy();
 
-        window.getMainPanel().repaint();
+            moveBall();
+
+
+
+        window.getContainer().repaint();
 
 
     }
