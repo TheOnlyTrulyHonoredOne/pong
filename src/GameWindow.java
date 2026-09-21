@@ -13,6 +13,11 @@ public class GameWindow implements KeyListener {
     private Paddle p2;
     private Ball ball;
     private String currentScreen;
+    JButton button = new JButton("Start");
+
+    JLabel label = new JLabel("Pong");
+
+
 
 
     public GameWindow(){
@@ -33,7 +38,18 @@ public class GameWindow implements KeyListener {
         mainPanel.setBackground(Color.BLACK);
 
         this.startScreen = new JPanel();
-        mainPanel.setBackground(Color.BLACK);
+        startScreen.setBackground(Color.BLACK);
+        label.setFont(new Font("Arial", Font.BOLD, 80));
+        label.setForeground(Color.WHITE);
+        startScreen.add(label);
+
+        button.addActionListener(e -> {
+            System.out.println("Button clicked!");
+            switchFrame("game");
+            setCurrentScreen("game");
+        });
+        startScreen.add(button);
+
 
 
 
@@ -96,7 +112,17 @@ public class GameWindow implements KeyListener {
     public void switchFrame(String frame){
         this.cardLayout.show(container, frame);
         this.currentScreen = frame;
+
+        if(frame.equals("game")){
+            this.mainPanel.setFocusable(true);
+            this.mainPanel.requestFocusInWindow();
+
+        } else {
+            this.startScreen.setFocusable(true);
+            this.startScreen.requestFocusInWindow();
+        }
     }
+
 
 
 

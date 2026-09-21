@@ -21,15 +21,10 @@ Ball ball;
 
 void main() {
 
-    Scanner input = new Scanner(System.in);
+
 
     GameWindow window = new GameWindow();
 
-    // Start Screen
-    if(input.nextInt() == 1){
-        window.switchFrame("game");
-        window.setCurrentScreen("game");
-    }
 
 
 
