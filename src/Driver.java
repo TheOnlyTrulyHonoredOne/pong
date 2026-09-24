@@ -33,23 +33,23 @@ void main() {
     p2 = window.getP2();
     ball = window.getBall();
 
+
     System.out.println("Initial: " + p1.getHeight());
 
     boolean inGame = true;
 
 
 
+
     lastTime = System.nanoTime();
     while (inGame){
 
-
-
+        if(window.getCurrentScreen().equals("game")){
             calculateDeltaTime();
             movePlayer();
             moveEnemy();
-
             moveBall();
-
+        }
 
 
         window.getContainer().repaint();
@@ -92,11 +92,14 @@ private boolean isColliding() {
 }
 
 private void movePlayer() {
+
     if (p1.isMovingUp() && p1.getPosY() >= 20){
         p1.setPosY(p1.getPosY() + (-vel * deltaTime));
     }
 
+
     if (p1.isMovingDown() && p1.getPosY() <= (530)){
+
         p1.setPosY(p1.getPosY() + (vel * deltaTime));
     }
 }

@@ -24,7 +24,7 @@ public class GameWindow implements KeyListener {
         this.frame = new JFrame();
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.setSize(800, 720);
-        this.frame.addKeyListener(this);
+
         this.frame.setVisible(true);
 
         this.p1 = new Player(100, 100, 10, 144);
@@ -36,6 +36,7 @@ public class GameWindow implements KeyListener {
 
         this.mainPanel = new Panel(p1,p2, ball);
         mainPanel.setBackground(Color.BLACK);
+        this.mainPanel.addKeyListener(this);
 
         this.startScreen = new JPanel();
         startScreen.setBackground(Color.BLACK);
@@ -109,6 +110,7 @@ public class GameWindow implements KeyListener {
     }
 
 
+
     public void switchFrame(String frame){
         this.cardLayout.show(container, frame);
         this.currentScreen = frame;
@@ -116,7 +118,6 @@ public class GameWindow implements KeyListener {
         if(frame.equals("game")){
             this.mainPanel.setFocusable(true);
             this.mainPanel.requestFocusInWindow();
-
         } else {
             this.startScreen.setFocusable(true);
             this.startScreen.requestFocusInWindow();
@@ -129,6 +130,7 @@ public class GameWindow implements KeyListener {
 
     private void logKeys(KeyEvent e) {
         if(e.getKeyChar() == 'w'){
+
             p1.setMovingUp(true);
             p1.setMovingDown(false);
         }
