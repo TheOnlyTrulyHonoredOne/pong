@@ -8,6 +8,7 @@ public class GameWindow implements KeyListener {
     private JPanel container;
     private JFrame frame;
     private JPanel startScreen;
+    private JPanel endScreen;
     private Panel mainPanel;
     private Paddle p1;
     private Paddle p2;
@@ -15,7 +16,8 @@ public class GameWindow implements KeyListener {
     private String currentScreen;
     JButton button = new JButton("Start");
 
-    JLabel label = new JLabel("Pong");
+    JLabel gameTitle = new JLabel("Pong");
+    JLabel gameOverLabel = new JLabel("GAME OVER");;
 
 
 
@@ -40,9 +42,16 @@ public class GameWindow implements KeyListener {
 
         this.startScreen = new JPanel();
         startScreen.setBackground(Color.BLACK);
-        label.setFont(new Font("Arial", Font.BOLD, 80));
-        label.setForeground(Color.WHITE);
-        startScreen.add(label);
+        gameTitle.setFont(new Font("Arial", Font.BOLD, 80));
+        gameTitle.setForeground(Color.WHITE);
+        startScreen.add(gameTitle);
+
+        this.endScreen = new JPanel();
+        endScreen.setBackground(Color.BLACK);
+        gameOverLabel.setFont(new Font("Arial", Font.BOLD, 80));
+        gameOverLabel.setForeground(Color.WHITE);
+        endScreen.add(gameOverLabel);
+
 
         button.addActionListener(e -> {
             System.out.println("Button clicked!");
@@ -58,10 +67,13 @@ public class GameWindow implements KeyListener {
         this.container = new JPanel(cardLayout);
         this.container.add(startScreen, "title");
         this.container.add(mainPanel, "game");
+        this.container.add(endScreen, "end");
 
         this.cardLayout = (CardLayout) container.getLayout();
         this.cardLayout.show(container, "title");
         this.currentScreen = "title";
+
+
 
         this.frame.setContentPane(container);
 
@@ -118,9 +130,12 @@ public class GameWindow implements KeyListener {
         if(frame.equals("game")){
             this.mainPanel.setFocusable(true);
             this.mainPanel.requestFocusInWindow();
-        } else {
+        } else if(frame.equals("title")) {
             this.startScreen.setFocusable(true);
             this.startScreen.requestFocusInWindow();
+        } else {
+            this.endScreen.setFocusable(true);
+            this.endScreen.requestFocusInWindow();
         }
     }
 

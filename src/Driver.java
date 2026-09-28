@@ -18,12 +18,12 @@ double ballVel = 50;
 Paddle p1;
 Paddle p2;
 Ball ball;
+GameWindow window;
 
 void main() {
 
 
-
-    GameWindow window = new GameWindow();
+    window = new GameWindow();
 
 
 
@@ -49,12 +49,29 @@ void main() {
             movePlayer();
             moveEnemy();
             moveBall();
+            checkPoints();
         }
 
 
         window.getContainer().repaint();
 
 
+    }
+
+
+}
+
+
+
+
+private void checkPoints() {
+    if(ball.getPosX() < p1.getPosX()) {
+        window.switchFrame("end");
+
+    }
+
+    if(ball.getPosX() > p2.getPosX()) {
+        window.switchFrame("end");
     }
 
 
